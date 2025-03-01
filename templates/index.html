@@ -1,0 +1,21 @@
+<html>
+<head>
+    <title>ASL Hand Gesture Recognition</title>
+</head>
+<body>
+    <h1>ASL Hand Gesture Recognition</h1>
+    <img src="{{ url_for('video') }}" width="640" height="480">
+    <h2>Detected Gesture: <span id="gesture">None</span></h2>
+
+    <script>
+        setInterval(async () => {
+            let response = await fetch('/video');
+            let text = await response.text();
+            let match = text.match(/Gesture: (\w+)/);
+            if (match) {
+                document.getElementById('gesture').innerText = match[1];
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
