@@ -1,21 +1,13 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>ASL Hand Gesture Recognition</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Webcam Feed</title>
 </head>
 <body>
-    <h1>ASL Hand Gesture Recognition</h1>
-    <img src="{{ url_for('video') }}" width="640" height="480">
-    <h2>Detected Gesture: <span id="gesture">None</span></h2>
-
-    <script>
-        setInterval(async () => {
-            let response = await fetch('/video');
-            let text = await response.text();
-            let match = text.match(/Gesture: (\w+)/);
-            if (match) {
-                document.getElementById('gesture').innerText = match[1];
-            }
-        }, 1000);
-    </script>
+    <h1>Live Webcam Feed</h1>
+    <img src="{{ url_for('video_feed') }}" width="640" height="480">
 </body>
 </html>
+
